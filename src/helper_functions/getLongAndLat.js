@@ -1,7 +1,7 @@
 const request = require('request');
 const getMap = require('./getMap.js');
 
-function getLongAndLat() {
+function getLongAndLat(cb) {
   const url = 'https://api.wheretheiss.at/v1/satellites/25544';
   request(url, (err, res, body) => {
     if (err) {
@@ -14,7 +14,7 @@ function getLongAndLat() {
       longitude: parsedBody.longitude,
       timestamp: parsedBody.timestamp,
     };
-    getMap(dataObj);
+    getMap(dataObj, cb);
   });
 }
 

@@ -4,7 +4,8 @@ module.exports = {
   method: 'GET',
   path: '/api',
   handler: (req, reply) => {
-    serveAPI();
-    reply.redirect('/');
+    serveAPI((data) => {
+      reply(data);
+    });
   },
 };
