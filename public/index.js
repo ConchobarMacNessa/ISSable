@@ -1,15 +1,14 @@
 /* eslint-disable */
-function updateDOM(dataArr) {
+function updateDOM(dataObj) {
+  console.log(dataObj);
   document.getElementById('app').innerHTML = '';
-  dataArr.forEach(function(data) {
-    var country = createEl('p', 'countryCode', data.countryCode)
-    var mapUrl = createEl('p', 'mapUrl', null, data.mapUrl)//TODO: figure out how to show map
-    var timestamp = createEl('p', 'time', data.timestamp)//TODO: format time
+    var country = createEl('p', 'countryCode', dataObj.countryCode)
+    var mapUrl = createEl('p', 'mapUrl', null, dataObj.mapUrl)//TODO: figure out how to show map
+    var timestamp = createEl('p', 'time', dataObj.timestamp)//TODO: format time
     country.appendChild(mapUrl);
     country.appendChild(timestamp);
     var app = document.getElementById('app');
     app.appendChild(country);
-  })
 }
 
 function createEl(element, className, text, url) {
@@ -24,9 +23,9 @@ function fetch(method, url, cb){
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (request.readyState === 4 && request.status === 200) {
-      console.log(request.status);
-      var data = JSON.stringify(request.responseText);
-      console.log(data);
+      // console.log(request.responseText);
+      var data = JSON.parse(request.responseText);
+      // console.log(data);
       cb(data);
     }
   }

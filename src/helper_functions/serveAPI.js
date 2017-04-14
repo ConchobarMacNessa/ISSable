@@ -1,7 +1,7 @@
 const coordinates = require('./getLongAndLat.js');
 
-function serveAPI() {
-  return coordinates();
+function serveAPI(cb) {
+  return coordinates(cb);
 }
 
 module.exports = serveAPI;
