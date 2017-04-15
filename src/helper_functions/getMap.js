@@ -1,5 +1,6 @@
 const request = require('request');
 const formatTime = require('./formatTime.js');
+const convertCountryCode = require('./convertCountryCode.js');
 
 function getMap(longandLat, cb) {
   const longitude = longandLat.longitude;
@@ -18,14 +19,20 @@ function getMap(longandLat, cb) {
     if (parsedBody.status === 404) {
       data = {
         countryCode: 'the Ocean',
-        mapUrl: `https://maps.google.com/maps?q=${longitude},${latitude}&z=4`,
+        mapUrl: `https://maps.google.com/maps?q=${latitude},${longitude}&z=4`,
         timestamp: formattedDate,
+        longitude,
+        latitude,
       };
     } else {
+      const countryCode = parsedBody.country_code;
+      const countryName = convertCountryCode(countryCode);
       data = {
-        countryCode: parsedBody.country_code,
+        countryCode: countryName,
         mapUrl: parsedBody.map_url,
         timestamp: formattedDate,
+        longitude,
+        latitude,
       };
     }
     cb(data);
