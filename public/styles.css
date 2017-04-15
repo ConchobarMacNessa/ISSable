@@ -6,6 +6,29 @@
 /*Purple Grey: #64494D */
 /*Cream: #C9CCA7 */
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color: #1E2B49;
+  font-family: 'Open Sans';
+}
+
+h1 {
+  color: #C9CCA7;
+  font-family: 'Rubik Mono One', sans-serif;
+  text-align: center;
+  letter-spacing: 0.3em;
+}
+
+#app {
+  background-color: #64494D;
+  border-color: #C9CCA7;
+  max-width: 60em;
+  text-align: center;
+  color: #C9CCA7;
+  margin: 0 auto;
 }
