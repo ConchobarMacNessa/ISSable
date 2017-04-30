@@ -19,7 +19,7 @@ function getMap(longandLat, cb) {
     if (parsedBody.status === 404) {
       data = {
         countryCode: 'the Ocean',
-        mapUrl: `https://maps.google.com/maps?q=${latitude},${longitude}&z=4`,
+        mapUrl: `https://maps.googleapis.com/maps/api/staticmap?size=764x400&center=${latitude},${longitude}&zoom=3&markers=${latitude},${longitude}`,
         timestamp: formattedDate,
         longitude,
         latitude,
@@ -29,7 +29,7 @@ function getMap(longandLat, cb) {
       const countryName = convertCountryCode(countryCode);
       data = {
         countryCode: countryName,
-        mapUrl: parsedBody.map_url,
+        mapUrl: `https://maps.googleapis.com/maps/api/staticmap?size=764x400&center=${latitude},${longitude}&zoom=3&markers=${latitude},${longitude}`,
         timestamp: formattedDate,
         longitude,
         latitude,
